@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 class Formulario extends Component {   
     state = {
         mesas: this.props.list_mesas,
-        itens: ["Água", "Suco", "Sanduíche"],
+        itens: this.props.list_itens,
     }
 
     render(){
@@ -53,6 +53,7 @@ class Formulario extends Component {
 
 const mapStateToProps = (state) => ({
     list_mesas: state.MesaReducers.mesas,
+    list_itens: state.ItemReducers.itens,
 });
 
 export default connect(mapStateToProps)(Formulario);
