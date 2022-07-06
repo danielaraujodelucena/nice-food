@@ -5,6 +5,8 @@ const actionsTypes = {
     LISTAR_PEDIDOS: 'LISTAR_PEDIDOS',
     EDITAR_PEDIDO: 'EDITAR_PEDIDO',
     ATUALIZAR_PEDIDO: 'ATUALIZAR_PEDIDO',
+    MESA_SELECIONADA: 'MESA_SELECIONADA',
+
 };
 
 export { actionsTypes };

@@ -1,8 +1,9 @@
+import { connect } from "react-redux";
 import React, { Component } from 'react';
 
 class Formulario extends Component {   
     state = {
-        mesas: ["Mesa 1", "Mesa 2", "Mesa 3", "Mesa 4"],
+        mesas: this.props.list_mesas,
         itens: ["Água", "Suco", "Sanduíche"],
     }
 
@@ -50,4 +51,8 @@ class Formulario extends Component {
     }
 }
 
-export default Formulario;
+const mapStateToProps = (state) => ({
+    list_mesas: state.MesaReducers.mesas,
+});
+
+export default connect(mapStateToProps)(Formulario);

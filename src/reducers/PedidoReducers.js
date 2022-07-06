@@ -1,4 +1,4 @@
-import { actionsTypes } from "../constants/pedido";
+import { actionsTypes } from "../constants";
 import { pedidos } from "../data";
 
 const INITIAL_STATE = {
@@ -12,11 +12,11 @@ const PedidoReducers = (state = INITIAL_STATE, action) => {
     switch(action.type){
         case actionsTypes.ADICIONAR_PEDIDO: 
             return{ 
-                anuncios: [...state.anuncios, { ...action.anuncio }],
+                pedidos: [...state.pedidos, { ...action.anuncio }],
             };
         case actionsTypes.REMOVER_PEDIDO:
             return{
-                anuncios: state.anuncios.filter(a => a.id !== action.anuncio.id),
+                pedidos: state.pedidos.filter(a => a.id !== action.anuncio.id),
             };
         case actionsTypes.PEDIDO_SELECIONADO:
             return{
@@ -30,9 +30,8 @@ const PedidoReducers = (state = INITIAL_STATE, action) => {
                 anunc: action.anuncio,
             };
         case actionsTypes.ATUALIZAR_PEDIDO:
-            console.log("reducer atualizar anúncio", action.anuncio);
             return {
-                anuncios: state.anuncios.map(a => a.id !== action.anuncio.id ? a : action.anuncio),
+                pedidos: state.pedidos.map(a => a.id !== action.anuncio.id ? a : action.anuncio),
             };
         default:
             return state;
