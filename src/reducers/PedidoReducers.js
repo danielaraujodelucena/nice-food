@@ -12,11 +12,11 @@ const PedidoReducers = (state = INITIAL_STATE, action) => {
     switch(action.type){
         case actionsTypes.ADICIONAR_PEDIDO: 
             return{ 
-                pedidos: [...state.pedidos, { ...action.anuncio }],
+                pedidos: [...state.pedidos, { ...action.pedido }],
             };
         case actionsTypes.REMOVER_PEDIDO:
             return{
-                pedidos: state.pedidos.filter(a => a.id !== action.anuncio.id),
+                pedidos: state.pedidos.filter(a => a.id !== action.pedido.id),
             };
         case actionsTypes.PEDIDO_SELECIONADO:
             return{
@@ -27,11 +27,11 @@ const PedidoReducers = (state = INITIAL_STATE, action) => {
         case actionsTypes.EDITAR_PEDIDO:
             return {
                 ...state, 
-                anunc: action.anuncio,
+                anunc: action.pedido,
             };
         case actionsTypes.ATUALIZAR_PEDIDO:
             return {
-                pedidos: state.pedidos.map(a => a.id !== action.anuncio.id ? a : action.anuncio),
+                pedidos: state.pedidos.map(a => a.id !== action.pedido.id ? a : action.anuncio),
             };
         default:
             return state;

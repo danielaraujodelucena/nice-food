@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import PedidoActions from "../actions/PedidoActions";
 
 class Formulario extends Component {   
     state = {
@@ -31,6 +32,7 @@ class Formulario extends Component {
                 itens: this.state.selectedItens,
             };
     
+            this.props.cadastrar(pedido);
             console.log("Cadastrar: ", pedido);
         }   
 
@@ -78,4 +80,8 @@ const mapStateToProps = (state) => ({
     list_itens: state.ItemReducers.itens,
 });
 
-export default connect(mapStateToProps)(Formulario);
+const mapDispatchToProps = (dispatch) => ({
+    cadastrar: (pedido) => dispatch(PedidoActions.adicionar(pedido)),
+ });
+
+export default connect(mapStateToProps, mapDispatchToProps)(Formulario);
