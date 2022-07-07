@@ -5,14 +5,35 @@ class Formulario extends Component {
     state = {
         mesas: this.props.list_mesas,
         itens: this.props.list_itens,
+        selectedItens: [],
     }
 
     render(){
+        const handleCheck = event => {
+            let list = [ ...this.state.selectedItens ];
+
+            if(event.target.checked){
+                list = [ ...this.state.selectedItens, event.target.value ];
+            }
+            else{
+                list.splice(this.state.selectedItens.indexOf(event.target.value), 1);
+            }
+
+            this.setState({selectedItens: list});
+        }
+        
         const cadastrarPedido = event => {
             event.preventDefault();
 
-            console.log("Cadastrar");
-        }
+            const pedido = {
+                id: new Date(),
+                mesa: event.target.mesa.value,
+                itens: this.state.selectedItens,
+            };
+    
+            console.log("Cadastrar: ", pedido);
+        }   
+
         return(
             <>
                 <h1>Cadastre o pedido</h1>
@@ -20,10 +41,10 @@ class Formulario extends Component {
                     <label>Selecione a mesa</label>
                     <select id="mesa">
                         { 
-                            this.state.mesas.map(mesa => 
+                            this.state.mesas.map((mesa, index) => 
                                 <option 
                                     value={mesa}
-                                    onChange={event => this.setState({ mesa: event.target.value })}
+                                    name="mesa"
                                 >
                                     {mesa}
                                 </option>) 
@@ -33,15 +54,16 @@ class Formulario extends Component {
                     <label>Selecione os itens do pedido</label>
 
                     { 
-                        this.state.itens.map(item => 
-                            <label>
+                        this.state.itens.map((item, index) => 
+                            <div key={index}>
                                 <input 
                                     type="checkbox" 
-                                    name={item} 
+                                    name="item" 
                                     value={item} 
+                                    onChange={handleCheck}
                                 />
                                 {item}
-                            </label>) 
+                            </div>) 
                     };
 
                     <button type="submit">Fazer Pedido</button>
