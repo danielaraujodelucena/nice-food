@@ -3,7 +3,7 @@ import store from './store';
 
 import Formulario from "./components/Formulario";
 import Publicidade from "./components/Publicidade";
-import Pedido from "./components/Pedido";
+import Pedidos from "./components/Pedidos";
 
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
       <Provider store={store}>
         <Formulario />
         <Publicidade />
-        <Pedido />
+        <Pedidos />
       </Provider>
       
     </div>

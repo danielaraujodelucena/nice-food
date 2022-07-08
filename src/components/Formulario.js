@@ -45,6 +45,7 @@ class Formulario extends Component {
                         { 
                             this.state.mesas.map((mesa, index) => 
                                 <option 
+                                    key={index}
                                     value={mesa}
                                     name="mesa"
                                 >

@@ -8,9 +8,12 @@ const INITIAL_STATE = {
     anunc: null,
 }
 
+
 const PedidoReducers = (state = INITIAL_STATE, action) => {
     switch(action.type){
         case actionsTypes.ADICIONAR_PEDIDO: 
+            console.log("aqui");
+
             return{ 
                 pedidos: [...state.pedidos, { ...action.pedido }],
             };
