@@ -3,10 +3,40 @@ import React, { Component } from "react";
 import PedidoActions from "../actions/PedidoActions";
 
 class Formulario extends Component {   
+    /*
+        Montagem: quando o componente está sendo criado na DOM
+
+            - constructor()
+            - static getDerivedStateFromProps()
+            - render()
+            - componentDidMount()
+
+        Atualização: quando o componente está sendo renderizado
+
+            - static getDerivedStateFromProps()
+            - shouldComponentUpdate()
+            - render()
+            - getSnapshotBeforeUpdate()
+            - componentDidUpdate()
+
+        Desmontagem: quando o componente está sendo removido da DOM (antes de removê-lo totalmente)
+
+            - componentWillUnmount()
+
+        Erros: quando existir erro em algum momento do ciclo de vida do componente
+
+            - static getDerivedStateFromError()
+            - componentDidCatch()
+    */
+
     state = {
         mesas: this.props.list_mesas,
         itens: this.props.list_itens,
         selectedItens: [],
+    }
+
+    componentDidUpdate(){
+        console.log('Formuário está sendo atualizado');
     }
 
     render(){
@@ -33,13 +63,13 @@ class Formulario extends Component {
             };
     
             this.props.cadastrar(pedido);
-            console.log("Cadastrar: ", pedido);
+            document.getElementById('add-form').reset();
         }   
 
         return(
             <>
                 <h1>Cadastre o pedido</h1>
-                <form onSubmit={cadastrarPedido}>
+                <form onSubmit={cadastrarPedido} id="add-form">
                     <label>Selecione a mesa</label>
                     <select id="mesa">
                         { 
@@ -51,7 +81,7 @@ class Formulario extends Component {
                                 >
                                     {mesa}
                                 </option>) 
-                        };
+                        }
                     </select>
 
                     <label>Selecione os itens do pedido</label>
@@ -67,7 +97,7 @@ class Formulario extends Component {
                                 />
                                 {item}
                             </div>) 
-                    };
+                    }
 
                     <button type="submit">Fazer Pedido</button>
                 </form>
