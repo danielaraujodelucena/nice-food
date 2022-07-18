@@ -62,7 +62,6 @@ class Formulario extends Component {
             };
     
             this.props.cadastrar(pedido);
-            document.getElementById('add-form').reset();
         }   
 
         return(
