@@ -5,15 +5,16 @@ import Pedido from './Pedido';
 class Pedidos extends Component {
     render(){
         return(
-            <aside>
+            <div className="flex-item pedidos">
                 <h1>Pedidos</h1>
-                {this.props.pedidos.map((pedido, index) => (
-                    <div key={index}>
-                        <Pedido pedido={pedido}/>
-                    </div>
-                ))}
-
-            </aside>
+                <div className='list-pedidos'>
+                    {this.props.pedidos.map((pedido, index) => (
+                        <div key={index}>
+                            <Pedido pedido={pedido}/>
+                        </div>
+                    ))}
+                </div>
+            </div>
         )
     }
 }

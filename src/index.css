@@ -4,3 +4,96 @@ body{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 2rem;
 }
+
+h1{
+    font-size: 1em;
+    width: 100%;
+}
+
+.flexbox-container-header{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.flexbox-container-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.flexbox-container-footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+/* FORM */
+
+.formulario{
+    align-self: stretch;
+    flex-wrap: wrap;
+    background-color: #C0C0C0	;
+}
+
+.formulario label{
+    width: 100%;
+    font-size: 0.7em;
+}
+
+.formulario select{
+    width: 100%;
+}
+
+.checkbox{
+    font-size: 0.7em;
+}
+
+.formulario button{
+    padding: 10px;
+    background-color:tomato;
+    color: #fff;
+    border: 0ch;
+}
+
+.formulario button:hover{
+    background-color:salmon;
+    color: #fff;
+}
+
+/* PEDIDOS */
+
+.pedidos{
+    flex-grow: 1;
+    align-self: stretch;
+}
+
+.list-pedidos{
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+/* PEDIDO */
+
+.pedido{
+    padding: 20px;
+    background-color:#C0C0C0;
+    margin: 5px;
+}
+
+.pedido b{
+    font-size: 25px;
+}
+
+.pedido p{
+    font-size: 20px;
+}
+
+/* PUBLICIDADE */
+
+.publicidade{
+  
+}

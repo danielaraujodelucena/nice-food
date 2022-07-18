@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import React, { Component } from "react";
 import PedidoActions from "../actions/PedidoActions";
-
 class Formulario extends Component {   
     /*
         Montagem: quando o componente está sendo criado na DOM
@@ -68,39 +67,41 @@ class Formulario extends Component {
 
         return(
             <>
-                <h1>Cadastre o pedido</h1>
-                <form onSubmit={cadastrarPedido} id="add-form">
-                    <label>Selecione a mesa</label>
-                    <select id="mesa">
+                <div className="flex-item formulario">
+                    <h1>Cadastre o pedido</h1>
+                    <form onSubmit={cadastrarPedido} id="add-form">
+                        <label>Selecione a mesa</label>
+                        <select id="mesa">
+                            { 
+                                this.state.mesas.map((mesa, index) => 
+                                    <option 
+                                        key={index}
+                                        value={mesa}
+                                        name="mesa"
+                                    >
+                                        {mesa}
+                                    </option>) 
+                            }
+                        </select>
+
+                        <label>Selecione os itens do pedido</label>
+
                         { 
-                            this.state.mesas.map((mesa, index) => 
-                                <option 
-                                    key={index}
-                                    value={mesa}
-                                    name="mesa"
-                                >
-                                    {mesa}
-                                </option>) 
+                            this.state.itens.map((item, index) => 
+                                <div className="checkbox" key={index}>
+                                    <input 
+                                        type="checkbox" 
+                                        name="item" 
+                                        value={item} 
+                                        onChange={handleCheck}
+                                    />
+                                    {item}
+                                </div>) 
                         }
-                    </select>
 
-                    <label>Selecione os itens do pedido</label>
-
-                    { 
-                        this.state.itens.map((item, index) => 
-                            <div key={index}>
-                                <input 
-                                    type="checkbox" 
-                                    name="item" 
-                                    value={item} 
-                                    onChange={handleCheck}
-                                />
-                                {item}
-                            </div>) 
-                    }
-
-                    <button type="submit">Fazer Pedido</button>
-                </form>
+                        <button type="submit">Fazer Pedido</button>
+                    </form>
+                </div>
             </>
         );
     }
