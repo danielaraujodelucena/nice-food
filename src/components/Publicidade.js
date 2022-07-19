@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 
 class Publicidade extends Component {
     render(){
-        return <h1>Publicidade</h1>;
+        return(
+            <>
+                <div className="flex-item publicidade">
+                    <h1>Publicidade</h1>
+                </div>
+            </>
+        ) 
     }
 }
 

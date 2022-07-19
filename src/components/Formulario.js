@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import React, { Component } from "react";
 import PedidoActions from "../actions/PedidoActions";
 
+import { FormStyle, FormStyleLabel, FormStyleSelect, FormStyleButton } from "../styles";
 class Formulario extends Component {   
     /*
         Montagem: quando o componente está sendo criado na DOM
@@ -63,44 +64,45 @@ class Formulario extends Component {
             };
     
             this.props.cadastrar(pedido);
-            document.getElementById('add-form').reset();
         }   
 
         return(
             <>
-                <h1>Cadastre o pedido</h1>
-                <form onSubmit={cadastrarPedido} id="add-form">
-                    <label>Selecione a mesa</label>
-                    <select id="mesa">
+                <FormStyle>
+                    <h1>Cadastre o pedido</h1>
+                    <form onSubmit={cadastrarPedido} id="add-form">
+                        <FormStyleLabel>Selecione a mesa</FormStyleLabel>
+                        <FormStyleSelect id="mesa">
+                            { 
+                                this.state.mesas.map((mesa, index) => 
+                                    <option 
+                                        key={index}
+                                        value={mesa}
+                                        name="mesa"
+                                    >
+                                        {mesa}
+                                    </option>) 
+                            }
+                        </FormStyleSelect>
+
+                        <FormStyleLabel>Selecione os itens do pedido</FormStyleLabel>
+
                         { 
-                            this.state.mesas.map((mesa, index) => 
-                                <option 
-                                    key={index}
-                                    value={mesa}
-                                    name="mesa"
-                                >
-                                    {mesa}
-                                </option>) 
+                            this.state.itens.map((item, index) => 
+                                <div className="checkbox" key={index}>
+                                    <input 
+                                        type="checkbox" 
+                                        name="item" 
+                                        value={item} 
+                                        onChange={handleCheck}
+                                    />
+                                    {item}
+                                </div>) 
                         }
-                    </select>
 
-                    <label>Selecione os itens do pedido</label>
-
-                    { 
-                        this.state.itens.map((item, index) => 
-                            <div key={index}>
-                                <input 
-                                    type="checkbox" 
-                                    name="item" 
-                                    value={item} 
-                                    onChange={handleCheck}
-                                />
-                                {item}
-                            </div>) 
-                    }
-
-                    <button type="submit">Fazer Pedido</button>
-                </form>
+                        <FormStyleButton type="submit">Fazer Pedido</FormStyleButton>
+                    </form>
+                </FormStyle>
             </>
         );
     }
