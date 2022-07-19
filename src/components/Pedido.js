@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 
-import '../index.css';
-
 import PedidoActions from '../actions/PedidoActions';
+import { PedidoStyle } from '../styles';
+
 class Pedido extends Component {
     componentDidMount() {
         console.log('Um pedido foi criado/renderizado');
@@ -16,11 +16,11 @@ class Pedido extends Component {
     render(){
         return(
             <>
-                <div className='flex-item pedido'>
+                <PedidoStyle className='flex-item'>
                     <b>{this.props.pedido.mesa}</b>
                     <p>{this.props.pedido.itens}</p>
                     <button onClick={() => this.props.removerPedido(this.props.pedido)}>Remover</button>
-                </div>
+                </PedidoStyle>
             </>
         )
     }

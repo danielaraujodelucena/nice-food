@@ -1,6 +1,5 @@
 import { Provider } from 'react-redux';
 import store from './store';
-import './index.css';
 
 import Formulario from "./components/Formulario";
 import Publicidade from "./components/Publicidade";

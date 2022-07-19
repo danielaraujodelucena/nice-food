@@ -1,6 +1,8 @@
 import { connect } from "react-redux";
 import React, { Component } from "react";
 import PedidoActions from "../actions/PedidoActions";
+
+import { FormStyle, FormStyleLabel, FormStyleSelect, FormStyleButton } from "../styles";
 class Formulario extends Component {   
     /*
         Montagem: quando o componente está sendo criado na DOM
@@ -66,11 +68,11 @@ class Formulario extends Component {
 
         return(
             <>
-                <div className="flex-item formulario">
+                <FormStyle>
                     <h1>Cadastre o pedido</h1>
                     <form onSubmit={cadastrarPedido} id="add-form">
-                        <label>Selecione a mesa</label>
-                        <select id="mesa">
+                        <FormStyleLabel>Selecione a mesa</FormStyleLabel>
+                        <FormStyleSelect id="mesa">
                             { 
                                 this.state.mesas.map((mesa, index) => 
                                     <option 
@@ -81,9 +83,9 @@ class Formulario extends Component {
                                         {mesa}
                                     </option>) 
                             }
-                        </select>
+                        </FormStyleSelect>
 
-                        <label>Selecione os itens do pedido</label>
+                        <FormStyleLabel>Selecione os itens do pedido</FormStyleLabel>
 
                         { 
                             this.state.itens.map((item, index) => 
@@ -98,9 +100,9 @@ class Formulario extends Component {
                                 </div>) 
                         }
 
-                        <button type="submit">Fazer Pedido</button>
+                        <FormStyleButton type="submit">Fazer Pedido</FormStyleButton>
                     </form>
-                </div>
+                </FormStyle>
             </>
         );
     }

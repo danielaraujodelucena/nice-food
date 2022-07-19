@@ -2,19 +2,22 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 
 import Pedido from './Pedido';
+import { PedidosStyle, ListPedidosStyle } from '../styles';
 class Pedidos extends Component {
     render(){
         return(
-            <div className="flex-item pedidos">
+            <PedidosStyle className='flex-item'>
                 <h1>Pedidos</h1>
-                <div className='list-pedidos'>
+                <ListPedidosStyle>
                     {this.props.pedidos.map((pedido, index) => (
                         <div key={index}>
                             <Pedido pedido={pedido}/>
                         </div>
                     ))}
-                </div>
-            </div>
+                </ListPedidosStyle>
+                
+            </PedidosStyle>
+
         )
     }
 }
